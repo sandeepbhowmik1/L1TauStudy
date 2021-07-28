@@ -17,7 +17,7 @@ plots = []
 isoTypes = ["nonIso", "Iso"]
 plotRanges=[2.1]
 workingPoints = ["30", "34", "38"]
-workingPointNames = ["l1tPt30", "l1tPt34", "l1tPt38"]
+workingPointNames = ["l1TauPt30", "l1TauPt34", "l1TauPt38"]
 
 for i in range (0, len(isoTypes)):
     for j in range (0, len(plotRanges)):

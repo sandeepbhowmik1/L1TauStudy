@@ -1,12 +1,12 @@
 OutputFile: /home/sbhowmik/L1TauTrigger/L1TauStudy/L1TauStudy/L1TauPerformance/efficiencyPlot/results/fitOutput_Efficiency_vs_Pt_for_data_Run2018_20210715.root
 NCPU: 4
 Turnon.N: 8
-Turnon.1.Name: Stage2_Efficiency_l1tPt30
+Turnon.1.Name: Stage2_Efficiency_l1TauPt30
 Turnon.1.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.1.Tree: L1TauAnalyzer
-Turnon.1.XVar: tauPt
+Turnon.1.XVar: recoTauPt
 Turnon.1.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.1.Cut: l1tPt30
+Turnon.1.Cut: l1TauPt30
 Turnon.1.WeightVar: bkgSubW
 Turnon.1.FitRange:0 1000
 Turnon.1.CB.Max: 1. 0.9 1.
@@ -14,12 +14,12 @@ Turnon.1.CB.Alpha: 3. 0.01 50.
 Turnon.1.CB.N: 10. 1.001 100.
 Turnon.1.CB.Mean: 30. 0. 120.
 Turnon.1.CB.Sigma: 2. 0.01 10
-Turnon.2.Name: Stage2_Efficiency_l1tPt34
+Turnon.2.Name: Stage2_Efficiency_l1TauPt34
 Turnon.2.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.2.Tree: L1TauAnalyzer
-Turnon.2.XVar: tauPt
+Turnon.2.XVar: recoTauPt
 Turnon.2.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.2.Cut: l1tPt34
+Turnon.2.Cut: l1TauPt34
 Turnon.2.WeightVar: bkgSubW
 Turnon.2.FitRange:0 1000
 Turnon.2.CB.Max: 1. 0.9 1.
@@ -27,12 +27,12 @@ Turnon.2.CB.Alpha: 3. 0.01 50.
 Turnon.2.CB.N: 10. 1.001 100.
 Turnon.2.CB.Mean: 30. 0. 120.
 Turnon.2.CB.Sigma: 2. 0.01 10
-Turnon.3.Name: Stage2_Efficiency_l1tPt38
+Turnon.3.Name: Stage2_Efficiency_l1TauPt38
 Turnon.3.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.3.Tree: L1TauAnalyzer
-Turnon.3.XVar: tauPt
+Turnon.3.XVar: recoTauPt
 Turnon.3.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.3.Cut: l1tPt38
+Turnon.3.Cut: l1TauPt38
 Turnon.3.WeightVar: bkgSubW
 Turnon.3.FitRange:0 1000
 Turnon.3.CB.Max: 1. 0.9 1.
@@ -40,12 +40,12 @@ Turnon.3.CB.Alpha: 3. 0.01 50.
 Turnon.3.CB.N: 10. 1.001 100.
 Turnon.3.CB.Mean: 30. 0. 120.
 Turnon.3.CB.Sigma: 2. 0.01 10
-Turnon.4.Name: Stage2_Efficiency_l1tPt120
+Turnon.4.Name: Stage2_Efficiency_l1TauPt120
 Turnon.4.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.4.Tree: L1TauAnalyzer
-Turnon.4.XVar: tauPt
+Turnon.4.XVar: recoTauPt
 Turnon.4.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.4.Cut: l1tPt120
+Turnon.4.Cut: l1TauPt120
 Turnon.4.WeightVar: bkgSubW
 Turnon.4.FitRange:0 1000
 Turnon.4.CB.Max: 1. 0.9 1.
@@ -53,12 +53,12 @@ Turnon.4.CB.Alpha: 3. 0.01 50.
 Turnon.4.CB.N: 10. 1.001 100.
 Turnon.4.CB.Mean: 30. 0. 120.
 Turnon.4.CB.Sigma: 2. 0.01 10
-Turnon.5.Name: Stage2_Efficiency_l1tPt30_Iso
+Turnon.5.Name: Stage2_Efficiency_l1TauPt30_Iso
 Turnon.5.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.5.Tree: L1TauAnalyzer
-Turnon.5.XVar: tauPt
+Turnon.5.XVar: recoTauPt
 Turnon.5.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.5.Cut: l1tPt30_Iso
+Turnon.5.Cut: l1TauPt30_Iso
 Turnon.5.WeightVar: bkgSubW
 Turnon.5.FitRange:0 1000
 Turnon.5.CB.Max: 1. 0.9 1.
@@ -66,12 +66,12 @@ Turnon.5.CB.Alpha: 3. 0.01 50.
 Turnon.5.CB.N: 10. 1.001 100.
 Turnon.5.CB.Mean: 30. 0. 120.
 Turnon.5.CB.Sigma: 2. 0.01 10
-Turnon.6.Name: Stage2_Efficiency_l1tPt34_Iso
+Turnon.6.Name: Stage2_Efficiency_l1TauPt34_Iso
 Turnon.6.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.6.Tree: L1TauAnalyzer
-Turnon.6.XVar: tauPt
+Turnon.6.XVar: recoTauPt
 Turnon.6.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.6.Cut: l1tPt34_Iso
+Turnon.6.Cut: l1TauPt34_Iso
 Turnon.6.WeightVar: bkgSubW
 Turnon.6.FitRange:0 1000
 Turnon.6.CB.Max: 1. 0.9 1.
@@ -79,12 +79,12 @@ Turnon.6.CB.Alpha: 3. 0.01 50.
 Turnon.6.CB.N: 10. 1.001 100.
 Turnon.6.CB.Mean: 30. 0. 120.
 Turnon.6.CB.Sigma: 2. 0.01 10
-Turnon.7.Name: Stage2_Efficiency_l1tPt38_Iso
+Turnon.7.Name: Stage2_Efficiency_l1TauPt38_Iso
 Turnon.7.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.7.Tree: L1TauAnalyzer
-Turnon.7.XVar: tauPt
+Turnon.7.XVar: recoTauPt
 Turnon.7.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.7.Cut: l1tPt38_Iso
+Turnon.7.Cut: l1TauPt38_Iso
 Turnon.7.WeightVar: bkgSubW
 Turnon.7.FitRange:0 1000
 Turnon.7.CB.Max: 1. 0.9 1.
@@ -92,12 +92,12 @@ Turnon.7.CB.Alpha: 3. 0.01 50.
 Turnon.7.CB.N: 10. 1.001 100.
 Turnon.7.CB.Mean: 30. 0. 120.
 Turnon.7.CB.Sigma: 2. 0.01 10
-Turnon.8.Name: Stage2_Efficiency_l1tPt120_Iso
+Turnon.8.Name: Stage2_Efficiency_l1TauPt120_Iso
 Turnon.8.File: /home/sbhowmik/L1TauTrigger_NTuple/Performance_2018data_181128/NTuple_SingleMu_Run2018_total_forEfficiency_181128.root
 Turnon.8.Tree: L1TauAnalyzer
-Turnon.8.XVar: tauPt
+Turnon.8.XVar: recoTauPt
 Turnon.8.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000
-Turnon.8.Cut: l1tPt120_Iso
+Turnon.8.Cut: l1TauPt120_Iso
 Turnon.8.WeightVar: bkgSubW
 Turnon.8.FitRange:0 1000
 Turnon.8.CB.Max: 1. 0.9 1.

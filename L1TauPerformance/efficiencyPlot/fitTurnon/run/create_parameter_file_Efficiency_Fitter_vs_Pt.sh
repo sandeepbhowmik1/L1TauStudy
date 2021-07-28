@@ -8,7 +8,7 @@ scriptOut=$3
 #fileName_Out='/home/sbhowmik/L1TauTrigger/L1TauStudy/L1TauStudy/L1TauPerformance/efficiencyPlot/results/fitOutput_Efficiency_vs_Pt_for_data_Run2018_20210715.root'
 #scriptOut='parameter_file_Efficiency_Fitter_vs_Pt_for_data_Run2018_20210715.par'
 
-varNameTag=("l1tPt30" "l1tPt34" "l1tPt38" "l1tPt120" "l1tPt30_Iso" "l1tPt34_Iso" "l1tPt38_Iso" "l1tPt120_Iso")
+varNameTag=("l1TauPt30" "l1TauPt34" "l1TauPt38" "l1TauPt120" "l1TauPt30_Iso" "l1TauPt34_Iso" "l1TauPt38_Iso" "l1TauPt120_Iso")
 
 fileOut=${scriptOut}
 
@@ -25,7 +25,7 @@ do
     echo "Turnon.${i_var}.Name: Stage2_Efficiency_${varNameTag[i_varName]}" | cat >>$fileOut
     echo "Turnon.${i_var}.File: ${fileName_In}" | cat >>$fileOut
     echo "Turnon.${i_var}.Tree: L1TauAnalyzer" | cat >>$fileOut
-    echo "Turnon.${i_var}.XVar: tauPt" | cat >>$fileOut
+    echo "Turnon.${i_var}.XVar: recoTauPt" | cat >>$fileOut
     echo "Turnon.${i_var}.Binning: 20 22 24 26 28 30 32 35 40 45 50 60 70 90 110 140 200 300 400 1000" | cat >>$fileOut
     #echo "Turnon.${i_var}.Binning:	20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100 120 150 200 300 500" | cat >>$fileOut
     echo "Turnon.${i_var}.Cut: ${varNameTag[i_varName]}" | cat >>$fileOut

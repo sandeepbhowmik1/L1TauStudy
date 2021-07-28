@@ -22,7 +22,9 @@ sampleType = ["data"]
 dataType = ["Run2018"]
 
 objType=["Pt", "Eta", "Nvtx"]
-objType=["Pt"]
+#objType=["Pt"]
+
+ratioWith = "RMS"  # "RMS", "FWHM"
 
 # ------------ *** End Modification *** --------------------------------------
 
@@ -48,7 +50,7 @@ for i in range (0, len(sampleType)):
 
 
 
-# -------------- Plot efficiency turn-on vs Pt -------------------------------
+# -------------- Plot efficiency vs Pt, Eta and Nvtx -------------------------------
 
 scriptDir = os.path.join(workingDir, "efficiencyPlot/fitTurnon/run")
 for i in range (0, len(objType)):
@@ -68,6 +70,68 @@ for i in range (0, len(objType)):
       scriptPlot = os.path.join(workingDir, "efficiencyPlot/macro", "plot_Efficiency_vs_"+objType[i]+"_for_All_WorkingPoints.py")
       fileName_Out_Plot = os.path.join(workingDir, "efficiencyPlot/plots", "plot_Efficiency_vs_"+objType[i]+"_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot)
       run_cmd('python %s %s %s' % (scriptPlot, fileName_Out, fileName_Out_Plot))
+
+
+# -------------- Plot efficiency vs Pt without fit ------------------------------- 
+
+scriptMake = os.path.join(workingDir, "efficiencyPlot/macro", "make_Hist_EfficiencyPlot_vs_Pt_for_All_WorkingPoints.py")
+fileName_In = os.path.join(pathRootTree, "NTuple_SingleMu_Run2018_total_181128.root")
+treeName_In = 'Ntuplizer/TagAndProbe' 
+fileName_Out = os.path.join(workingDir, "efficiencyPlot/results", "hist_Efficiency_vs_Pt_for_data_Run2018_All_WorkingPoints_20210715.root")
+run_cmd('python %s %s %s %s' % (scriptMake, fileName_In, treeName_In, fileName_Out))
+scriptPlot = os.path.join(workingDir, "efficiencyPlot/macro", "plot_Hist_EfficiencyPlot_vs_Pt_for_All_WorkingPoints.py")
+fileName_In = os.path.join(workingDir, "efficiencyPlot/results", "hist_Efficiency_vs_Pt_for_data_Run2018_All_WorkingPoints_20210715.root")
+fileName_Out = os.path.join(workingDir, "efficiencyPlot/plots", "plot_Hist_Efficiency_vs_Pt_for_data_Run2018_All_WorkingPoints_20210715")
+run_cmd('python %s %s %s' % (scriptPlot, fileName_In, fileName_Out))
+
+
+# -----------Convert root tree for resolution plot ------------ 
+
+for i in range (0, len(sampleType)):
+  scriptFile = os.path.join(workingDir, "resolutionPlot/macro", "convertTreeFor_ResolutionPlot_"+sampleType[i]+".py")
+  #fileName_In = os.path.join(pathRootTree, "rootTree_test_"+algoType[k]+"Analyzer_Signal_"+tagRootTree+".root")
+  fileName_In = os.path.join(pathRootTree, "NTuple_SingleMu_Run2018_total_181128.root")
+  treeName_In = 'Ntuplizer/TagAndProbe'
+  fileName_Out = os.path.join(pathRootTree, "NTuple_SingleMu_Run2018_total_forResolution_181128.root")
+  run_cmd('python %s %s %s %s' % (scriptFile, fileName_In, treeName_In, fileName_Out))
+
+
+# -------------- Plot resolution turn-on vs Pt -------------------------------      
+
+for j in range (0, len(sampleType)):
+  for k in range (0, len(dataType)):
+    scriptMake = os.path.join(workingDir, "resolutionPlot/macro", "make_Resolution.py")
+    #fileName_In = os.path.join(pathRootTree, "rootTree_Signal_Resolution_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+    fileName_In = os.path.join(pathRootTree, "NTuple_SingleMu_Run2018_total_forResolution_181128.root")
+    fileName_Out = os.path.join(workingDir, "resolutionPlot/results", "hist_Resolution_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+    run_cmd('python %s %s %s' % (scriptMake, fileName_In, fileName_Out))
+    scriptFit = os.path.join(workingDir, "resolutionPlot/macro", "fit_Resolution.C")
+    fileName_In = os.path.join(workingDir, "resolutionPlot/results", "hist_Resolution_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+    fileName_Out = os.path.join(workingDir, "resolutionPlot/results", "fitted_Hist_Resolution_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+    run_cmd('root -b -n -q -l \'%s(\"%s\", \"%s\")\'' % (scriptFit, fileName_In, fileName_Out)) 
+    scriptPlot = os.path.join(workingDir, "resolutionPlot/macro", "plot_Resolution.py")
+    fileName_In = os.path.join(workingDir, "resolutionPlot/results", "fitted_Hist_Resolution_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+    fileName_Out = os.path.join(workingDir, "resolutionPlot/plots", "plot_Resolution_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot)
+    run_cmd('python %s %s %s' % (scriptPlot, fileName_In, fileName_Out))
+
+    scriptMake = os.path.join(workingDir, "resolutionPlot/macro", "make_Et_Resolution_vs_Pt_Eta_Nvtx.py")
+    #fileName_In = os.path.join(pathRootTree, "rootTree_Signal_Resolution_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root") 
+    fileName_In = os.path.join(pathRootTree, "NTuple_SingleMu_Run2018_total_forResolution_181128.root")
+    fileName_Out = os.path.join(workingDir, "resolutionPlot/results", "hist_Et_Resolution_vs_Pt_Eta_Nvtx_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+    run_cmd('python %s %s %s' % (scriptMake, fileName_In, fileName_Out))
+    if(ratioWith=="FWHM"):
+      scriptFit = os.path.join(workingDir, "resolutionPlot/macro", "fit_Et_Resolution_vs_Pt_Eta_Nvtx.C")
+      fileName_In = os.path.join(workingDir, "resolutionPlot/results", "hist_Et_Resolution_vs_Pt_Eta_Nvtx_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+      fileName_Out = os.path.join(workingDir, "resolutionPlot/results", "fitted_Hist_Et_Resolution_vs_Pt_Eta_Nvtx_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+      run_cmd('root -b -n -q -l \'%s(\"%s\", \"%s\")\'' % (scriptFit, fileName_In, fileName_Out)) 
+    scriptPlot = os.path.join(workingDir, "resolutionPlot/macro", "plot_Et_Resolution_vs_Pt_Eta_Nvtx.py")
+    if(ratioWith=="FWHM"):
+      fileName_In = os.path.join(workingDir, "resolutionPlot/results", "fitted_Hist_Et_Resolution_vs_Pt_Eta_Nvtx_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+      fileName_Out = os.path.join(workingDir, "resolutionPlot/results", "plot_Et_Resolution_with_FWHM_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot)
+    else:
+      fileName_In = os.path.join(workingDir, "resolutionPlot/results", "hist_Et_Resolution_vs_Pt_Eta_Nvtx_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot+".root")
+      fileName_Out = os.path.join(workingDir, "resolutionPlot/plots", "plot_Et_Resolution_with_RMS_for_"+sampleType[j]+"_"+dataType[k]+"_"+tagPlot)
+    run_cmd('python %s %s %s %s' % (scriptPlot, fileName_In, fileName_Out, ratioWith))
 
 
 
